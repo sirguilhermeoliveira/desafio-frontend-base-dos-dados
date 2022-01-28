@@ -1,3 +1,4 @@
+import {  useState } from 'react';
 import {
     Container,
     WhichTurnIs,
@@ -5,42 +6,41 @@ import {
     ButtonGame,
     WhoWins,
     ResetGame,
-    ButtonFlex,
+    ButtonXColor,
+    ButtonOColor,
     ButtonColor,
     Header
   } from './styles';
 
-function Home() {
+  const Home = () => {
+const [whichTurnIs, setWhichTurnIs] = useState('X')
+const [mutableButtonColor, setMutableButtonColor] = useState('blue')
+const numberGameSize = (['?','?','?','?','?','?','?','?','?'])
+
+function changeButtonType(value){
+  setMutableButtonColor('red')
+  setWhichTurnIs('O') 
+  console.log('value')
+}
+
     return (
       <Container>
           <Header>
               Jogo da velha
           </Header>
           <WhichTurnIs>
-            É a vez do: <ButtonColor>X</ButtonColor>
+            É a vez do: <ButtonColor color={mutableButtonColor}>{whichTurnIs}</ButtonColor>
           </WhichTurnIs>
           <GameContainer>
-              <ButtonFlex>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            <ButtonGame><ButtonColor>X</ButtonColor></ButtonGame>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-              </ButtonFlex>
-              <ButtonFlex>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            </ButtonFlex>
-            <ButtonFlex>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            <ButtonGame><ButtonColor>0</ButtonColor></ButtonGame>
-            </ButtonFlex>
+              {numberGameSize.map((value, index) => (
+            <ButtonGame onClick={changeButtonType.bind(index)} key={index} id={index}>{value}</ButtonGame>
+                  ))}                
           </GameContainer>
           <WhoWins>
-              O <ButtonColor>X</ButtonColor> ganhou <ButtonColor>0</ButtonColor> vezes
+              O <ButtonXColor>X</ButtonXColor> ganhou <ButtonColor>0</ButtonColor> vezes
           </WhoWins>
           <WhoWins>
-              O <ButtonColor>O</ButtonColor> ganhou <ButtonColor>0</ButtonColor> vezes
+              O <ButtonOColor>O</ButtonOColor> ganhou <ButtonColor>0</ButtonColor> vezes
           </WhoWins>
           <ResetGame>Clique para resetar o jogo</ResetGame>
           <ResetGame>Clique para resetar as partidas</ResetGame>
