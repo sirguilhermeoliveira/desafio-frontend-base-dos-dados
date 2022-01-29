@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import App from './pages/Home';
+import Home from './pages/Home';
+import GlobalStyle from './theme/globalStyle';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Fragment>
+    <GlobalStyle/>
+    <Home />
+  </Fragment>,
   document.getElementById('root')
 );

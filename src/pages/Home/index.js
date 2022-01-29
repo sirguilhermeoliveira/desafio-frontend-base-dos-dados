@@ -20,6 +20,7 @@ import {
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import Modal from 'react-modal';
+  import Switch from "react-switch";
 
 const Home = () => {
 const firstButtons = ['?','?','?','?','?','?','?','?','?']
@@ -33,6 +34,11 @@ const [cantPress, setCantPress] = useState(false)
 const [whichResetIs, setWhichResetIs] = useState('')
 const [remainingToWinX, setRemainingToWinX] = useState(3)
 const [remainingToWinO, setRemainingToWinO] = useState(3)
+const [isDarkTheme, setDarkTheme] = useState(false)
+
+function handleDarkTheme() {
+  setDarkTheme(!isDarkTheme)
+}
 
 function openModal(value) {
   setIsOpen(true);
@@ -183,7 +189,7 @@ function resetMatch(value){
 }
 
     return (
-      <Container>
+      <Container backgroundColor={isDarkTheme}>
         <ToastContainer />
        <Modal
         isOpen={modalIsOpen}
@@ -208,14 +214,15 @@ function resetMatch(value){
       </ModalRow>
       </Fragment>
         }
-       </Modal> 
-          <Title>
+       </Modal>
+       <Switch offColor='#000' onColor='#FFF' onHandleColor='#000' onChange={handleDarkTheme} checked={isDarkTheme} />
+          <Title color={isDarkTheme}>
               Jogo da velha
           </Title>
-          <Subtitle>
+          <Subtitle color={isDarkTheme}>
             melhor de 3
           </Subtitle>
-          <WhichTurnIs>
+          <WhichTurnIs color={isDarkTheme}>
             É a vez do: <ButtonColor color={mutableButtonColor}>{whichTurnIs}</ButtonColor>
           </WhichTurnIs>
           <GameContainer>
@@ -223,16 +230,16 @@ function resetMatch(value){
             <ButtonGame id={index} onClick={changeButtonType.bind(null, index, value)} key={index}>{value}</ButtonGame>
                   ))}                
           </GameContainer>
-          <WhoWins>
+          <WhoWins color={isDarkTheme}>
               O <ButtonXColor>X</ButtonXColor> ganhou <ButtonColor>{winsX}</ButtonColor> vezes
           </WhoWins>
-          <WhoWins>
+          <WhoWins color={isDarkTheme}>
               Faltam {remainingToWinX} partidas para o jogador <ButtonXColor>X</ButtonXColor> ganhar o jogo
           </WhoWins>
-          <WhoWins>
+          <WhoWins color={isDarkTheme}>
               O <ButtonOColor>O</ButtonOColor> ganhou <ButtonColor>{winsO}</ButtonColor> vezes
           </WhoWins>
-          <WhoWins>
+          <WhoWins color={isDarkTheme}>
               Faltam {remainingToWinO} partidas para o jogador <ButtonOColor>O</ButtonOColor> ganhar o jogo
           </WhoWins>
           <ResetGame onClick={() => openModal('resetGame')}>Clique para resetar o jogo</ResetGame>

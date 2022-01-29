@@ -3,23 +3,29 @@ import styled from 'styled-components';
 export const Container = styled.div`
 display: flex;
 align-items: center;
-flex-direction: column
+flex-direction: column;
+background-color: ${(props) => props.backgroundColor ? 'black' : 'white'};
+width: 100%;
+height: 100%;
 `;
 export const Title = styled.div`
 color: black;
 font-size: 50px;
 text-align: center;
+color: ${(props) => props.color ? 'white': 'black'};
 `;
 export const Subtitle = styled.div`
 color: black;
 font-size: 25px;
 text-align: center;
+color: ${(props) => props.color ? 'white': 'black'};
 `;
 export const WhichTurnIs = styled.div`
 font-size: 30px;
 margin: 20px;
 display: flex;
 flex-direction:row;
+color: ${(props) => props.color ? 'white': 'black'};
 `;
 export const WhichTurnIsButton = styled.p`
 color: blue;
@@ -44,13 +50,14 @@ font-weight: bold;
 border: 1px solid black;
 width: 30px;
 text-align: center;
-cursor: pointer
+cursor: pointer;
 `;
 export const WhoWins = styled.div`
 margin: 10px;
 font-size: 20px;
 display: flex;
 flex-direction: row;
+color: ${(props) => props.color ? 'white': 'black'};
 `;
 export const ResetGame = styled.div`
 color: red;
@@ -74,6 +81,7 @@ export const ModalTitle = styled.p`
 text-align: center;
 font-size: 18px;
 font-weight: bold;
+color: ${(props) => props.color ? 'white': 'black'};
 `;
 export const ModalRow = styled.div`
 display:flex;
