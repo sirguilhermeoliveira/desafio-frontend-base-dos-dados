@@ -5,9 +5,14 @@ display: flex;
 align-items: center;
 flex-direction: column
 `;
-export const Header = styled.header`
+export const Title = styled.div`
 color: black;
 font-size: 50px;
+text-align: center;
+`;
+export const Subtitle = styled.div`
+color: black;
+font-size: 25px;
 text-align: center;
 `;
 export const WhichTurnIs = styled.div`
@@ -53,7 +58,6 @@ font-size: 20px;
 margin-top: 50px;
 cursor: pointer;
 `;
-
 export const ButtonColor = styled.p`
 color: ${(props) => props.color || 'black'};
 margin: 0 5px;
@@ -65,4 +69,32 @@ margin: 0 5px;
 export const ButtonOColor = styled.div`
 color: red;
 margin: 0 5px;
+`;
+export const ModalTitle = styled.p`
+text-align: center;
+font-size: 18px;
+font-weight: bold;
+`;
+export const ModalRow = styled.div`
+display:flex;
+flex-direction:row;
+justify-content:center;
+`;
+export const ModalConfirmation = styled.p`
+font-size: 16px;
+color: white;
+background-color: green;
+padding: 10px 25px;
+margin-right: 5px;
+font-weight:bold;
+cursor:pointer;
+`;
+export const ModalNegation = styled.p`
+font-size: 16px;
+color: white;
+background-color: red;
+padding: 10px 25px;
+margin-left: 5px;
+font-weight:bold;
+cursor:pointer;
 `;
